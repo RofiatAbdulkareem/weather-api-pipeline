@@ -38,22 +38,18 @@ resource "aws_iam_user_policy" "s3_write_policy" {
     "Version": "2012-10-17",
 	"Statement": [
 		{
-			"Sid": "listallbucket",
-			"Effect": "Allow",
-			"Action": [
-				"s3:ListAllMyBuckets"
-			],
-			"Resource": [
-				"*"
-			]
+			Action = [
+        "s3:ListAllBuckets",
+      ],
+      Effect = "Allow",
+      Resource = "*"
 		},
 		{
-			"Sid": "putobject",
-			"Effect": "Allow",
-			"Action": [
+			Effect: "Allow",
+			Action: [
 				"s3:PutObject"
 			],
-			"Resource": "[arn:aws:s3:::current-weather-data/*]"
+			Resource: "arn:aws:s3:::current-weather-data/*"
 		}
 	]
   })

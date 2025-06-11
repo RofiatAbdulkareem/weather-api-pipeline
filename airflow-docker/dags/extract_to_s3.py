@@ -16,13 +16,10 @@ payload = {
 
 response = requests.get(BASE_URL, params=payload)
 
-def get_weather_data(response):
+def get_weather_data():
     """
     processes the API response, normalizes the data into a DataFrame,
     cleans and transform selected columns and returns the DataFrame.
-
-    Parameters:
-        response: The response object returned from the API request.
 
     Returns:
         df: A DataFrame containing the weather data.
