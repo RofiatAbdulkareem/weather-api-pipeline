@@ -35,23 +35,23 @@ resource "aws_iam_user_policy" "s3_write_policy" {
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
   policy = jsonencode({
-    "Version": "2012-10-17",
-	"Statement": [
-		{
-			Action = [
-        "s3:ListAllBuckets",
-      ],
-      Effect = "Allow",
-      Resource = "*"
-		},
-		{
-			Effect: "Allow",
-			Action: [
-				"s3:PutObject"
-			],
-			Resource: "arn:aws:s3:::current-weather-data/*"
-		}
-	]
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        Action = [
+          "s3:ListAllBuckets",
+        ],
+        Effect   = "Allow",
+        Resource = "*"
+      },
+      {
+        Effect : "Allow",
+        Action : [
+          "s3:PutObject"
+        ],
+        Resource : "arn:aws:s3:::current-weather-data/*"
+      }
+    ]
   })
 }
 
@@ -63,8 +63,8 @@ resource "aws_ssm_parameter" "weather_user_ssm_access" {
 }
 
 resource "random_password" "password" {
-  length           = 24
-  special          = false
+  length  = 24
+  special = false
 }
 
 resource "aws_ssm_parameter" "weather_user_ssm_secret" {
